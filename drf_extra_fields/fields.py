@@ -3,6 +3,7 @@ import binascii
 import imghdr
 import io
 import uuid
+import os
 
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -111,10 +112,12 @@ class Base64FieldMixin(object):
                 return ""
 
             try:
-                with open(file.name, "rb") as f:
-                    return base64.b64encode(f.read()).decode()
-            except FileNotFoundError:
-                return ""
+                if 'AWS_S3_IMAGE_URI' in os.environ:
+                    with open((os.environ['AWS_S3_IMAGE_URI'] % file.name), "rb") as f:
+                        return base64.b64encode(f.read()).decode
+                else:
+                    with open(file.name, "rb") as f:
+                        return base64.b64encode(f.read()).decode()
             except Exception:
                 raise IOError("Error encoding file")
         else:
