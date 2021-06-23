@@ -3,7 +3,6 @@ import binascii
 import imghdr
 import io
 import uuid
-import os
 
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import SimpleUploadedFile
