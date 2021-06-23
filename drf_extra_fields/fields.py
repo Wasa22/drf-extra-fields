@@ -6,6 +6,7 @@ import uuid
 
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.core.files.storage import default_storage
 from django.utils.translation import gettext_lazy as _
 from rest_framework.fields import (
     DateField,
@@ -111,7 +112,7 @@ class Base64FieldMixin(object):
                 return ""
 
             try:
-                with open(file.name, "rb") as f:
+                with default_storage.open(file.name, "rb") as f:
                     return base64.b64encode(f.read()).decode()
             except Exception:
                 raise IOError("Error encoding file")
