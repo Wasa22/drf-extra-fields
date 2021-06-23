@@ -113,6 +113,8 @@ class Base64FieldMixin(object):
             try:
                 with open(file.name, "rb") as f:
                     return base64.b64encode(f.read()).decode()
+            except FileNotFoundError:
+                return ""
             except Exception:
                 raise IOError("Error encoding file")
         else:
