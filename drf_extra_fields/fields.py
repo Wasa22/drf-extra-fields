@@ -112,10 +112,10 @@ class Base64FieldMixin(object):
                 return ""
 
             try:
-                if 'AWS_S3_IMAGE_URI' in os.environ:
-                    with open((os.environ['AWS_S3_IMAGE_URI'] % file.name), "rb") as f:
-                        return base64.b64encode(f.read()).decode
-                else:
+                if 'AWS_S3_IMAGE_URI_PREFIX' in os.environ:
+                    with open((os.environ['AWS_S3_IMAGE_URI_PREFIX'] % file.name), "rb") as f:
+                        return base64.b64encode(f.read()).decode()
+                else :
                     with open(file.name, "rb") as f:
                         return base64.b64encode(f.read()).decode()
             except Exception:
