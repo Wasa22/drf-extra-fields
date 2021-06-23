@@ -12,7 +12,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='drf-extra-fields',
-    version='3.1.1',
+    version='3.1.2',
     packages=['drf_extra_fields',
               'drf_extra_fields.runtests'],
     include_package_data=True,
@@ -24,9 +24,9 @@ setup(
     description='Additional fields for Django Rest Framework.',
     long_description=README,
     long_description_content_type="text/markdown",
-    author='hipo',
-    author_email='pypi@hipolabs.com',
-    url='https://github.com/Hipo/drf-extra-fields',
+    author='Tanzwut',
+    author_email='emmanuel12345@hotmail.com',
+    url='https://github.com/Wasa22/drf-extra-fields.git',
     python_requires=">=3.5",
     install_requires=requirements,
     classifiers=[
