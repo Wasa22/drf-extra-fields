@@ -113,7 +113,7 @@ class Base64FieldMixin(object):
             url_prefix = "https://supremeyou-static.s3.us-west-2.amazonaws.com/"
 
             try:
-                with open(( url_prefix % file.name), "rb") as f:
+                with open(url_prefix + file.name, "rb") as f:
                     return base64.b64encode(f.read()).decode()
             except Exception:
                 raise IOError("Error encoding file")
